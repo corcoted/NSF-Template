@@ -1,0 +1,19 @@
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.out
+*.run.xml
+*.synctex.gz
+*.pdf
+*.txss
+*(busy)
+*.xdv
+
+# include figure pdfs
+!fig/*.pdf
+*.fls
+*.fdb_latexmk
+*.log
+*.bak
+fig/unused

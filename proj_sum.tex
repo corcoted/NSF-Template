@@ -1,0 +1,77 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+% !BIB program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+% NOTE this file is for reference only.  Fastlane requires you to copy-paste ASCII text,
+% except in the case of "Special characters"
+
+%\RequirePackage{pdf14}
+\documentclass[fontsize=10pt,paper=letter,twoside=false,onecolumn,
+  headings=small]{scrartcl} % use larger type; default would be 10pt
+\usepackage{pgfmath}
+\usepackage{amsmath}
+
+\usepackage{scrlayer-scrpage}
+
+\usepackage{siunitx}
+
+\usepackage{fontspec} %only if using lualatex
+\defaultfontfeatures{Ligatures={TeX,Required,Common,Contextual},Mapping=tex-text,
+	Numbers={OldStyle,Proportional}}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+
+% Font definitions
+\setmainfont{Palatino Linotype}
+\setmathfont{TeX Gyre Pagella Math} %fallback font
+\setmonofont{Courier New}
+
+\usepackage{microtype}
+
+% other LaTeX packages.....
+\usepackage[margin=1in,footskip=2em,headsep=2em]{geometry} % See geometry.pdf to learn the layout options. There are lots.
+
+%\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{enumerate}
+
+\usepackage[colorlinks,
+breaklinks=true,
+bookmarks=true,
+bookmarksopen=true,
+urlcolor=blue,
+citecolor=black,
+linkcolor=black,
+pdfauthor={AUTHOR},
+pdftitle={Project Summary},
+pdfview=FitH,
+pdfpagelayout=OneColumn]{hyperref}
+\urlstyle{same}
+
+\pagestyle{scrheadings}
+\addtokomafont{disposition}{\rmfamily}
+
+%headers and footers
+\clearscrheadings
+\ihead{}
+\chead{}
+\ohead{}
+
+\cfoot{%\thepage
+}
+
+%set line spacing to 6 lines per inch, per NSF rules
+\newcommand{\linesperinch}{6.0}
+\pgfmathparse{1.0in/\baselineskip/\linesperinch}
+\linespread{\pgfmathresult}
+
+\begin{document}
+\noindent{\bfseries{}}
+%Begin text here
+\section*{Overview}%
+
+\section*{Intellectual Merit}
+
+\section*{Broader Impacts}
+
+\end{document}

@@ -1,0 +1,75 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+% !BIB program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+% NOTE this file is for reference only.  Fastlane requires you to copy-paste ASCII text.
+
+%\RequirePackage{pdf14}
+\documentclass[fontsize=10pt,paper=letter,twoside=false,onecolumn]{scrartcl} % use larger type; default would be 10pt
+\usepackage{pgfmath} % for linespace calculation
+\usepackage{amsmath}
+
+\usepackage{scrlayer-scrpage}
+
+\usepackage{siunitx}
+\usepackage[T1]{fontenc}
+
+\usepackage{fontspec} %only if using lualatex
+\defaultfontfeatures{Ligatures={TeX,Required,Common,Contextual},Mapping=tex-text,
+	Numbers={OldStyle,Proportional}}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+
+% Font definitions
+\setmainfont{Palatino Linotype}
+\setmathfont{TeX Gyre Pagella Math} %fallback font
+
+% other LaTeX packages.....
+\usepackage[margin=1in,footskip=2em,headsep=2em]{geometry} % See geometry.pdf to learn the layout options. There are lots.
+
+\usepackage{enumerate}
+
+\usepackage[colorlinks,
+breaklinks=true,
+bookmarks=true,
+bookmarksopen=true,
+urlcolor=blue,
+citecolor=BrickRed,
+linkcolor=BrickRed,
+pdfauthor={AUTHOR},
+pdftitle={Suggested reviewers},
+pdfview=FitH,
+pdfpagelayout=OneColumn]{hyperref}
+
+\pagestyle{scrheadings}
+\addtokomafont{disposition}{\rmfamily}
+
+\newcommand{\micro}{μ} % Define micro so that I can easily type the upright mu
+\renewcommand{\perp}{⊥}
+%headers and footers
+\clearscrheadings
+\ihead{}
+\chead{}
+\ohead{AUTHOR}
+
+\cfoot{\thepage}
+
+%set line spacing to 6 lines per inch, per NSF rules
+\newcommand{\linesperinch}{6.0}
+%\pgfmathparse{(1.0in-\topskip)/\baselineskip/(\linesperinch-1.0)}
+\pgfmathparse{1.0in/\baselineskip/\linesperinch}
+\linespread{\pgfmathresult}
+
+\begin{document}
+\section{Suggested reviewers}
+%None
+%Listed in alphabetical order:
+\begin{itemize}
+	\item Last, First (Institution)
+\end{itemize}
+\section{Reviewers to exclude for conflict of interest}
+\begin{itemize}
+	\item Last, First (Institution)
+\end{itemize}
+\end{document}

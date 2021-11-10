@@ -1,0 +1,153 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+% !BIB program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+%\RequirePackage{pdf14}
+\documentclass[fontsize=10pt,paper=letter,twoside=false,onecolumn,
+   headings=small]{scrartcl} % use larger type; default would be 10pt
+\usepackage{amsmath}
+\usepackage{pgfmath}
+
+\usepackage{scrlayer-scrpage}
+
+% uncomment line below to show layout markers
+%\usepackage{lua-visual-debug}
+
+%misc formating packages
+\usepackage{graphicx}
+\usepackage{wrapfig}
+%\usepackage{endfloat}
+%\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{esint}
+\usepackage{siunitx}
+%\usepackage{cancel}
+
+%\usepackage{mathspec} %only if using xelatex
+\usepackage[no-math]{fontspec} %only if using lualatex
+\defaultfontfeatures{Ligatures={TeX,Required,Common,Contextual},Mapping=tex-text,
+	Numbers={Lining,Proportional}}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+
+% Font definitions
+\setmainfont{Palatino Linotype}
+\setmathfont[Numbers=Lining, Scale=0.95]{TeX Gyre Pagella Math} %fallback font
+\setmonofont{Courier New}
+
+\usepackage{microtype}
+
+% other LaTeX packages.....
+\usepackage[margin=1in,footskip=2em,headsep=2em]{geometry} % See geometry.pdf to learn the layout options. There are lots.
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{enumerate}
+
+%\usepackage[english=american,autostyle=true]{csquotes}
+
+\usepackage[backend=biber,
+bibencoding=utf8,
+sorting=none,
+url=true,
+maxbibnames=99,
+isbn=false,
+doi=true,
+sortcites=true,
+%style=numeric-comp,
+style=phys,
+arxiv=abs,
+%defernumbers=true,
+%style=reading,annotation=true,entryhead=false,
+]{biblatex}
+
+%\input{biblatexdefs.tex} %input various biblatex HACKs from other file
+% HACK use explicit urls in bib entries instead of doi numbers with embedded links
+%\DeclareFieldFormat{doi}{\url{http://dx.doi.org/#1}}
+
+\addbibresource{nsf.bib}
+
+\usepackage[colorlinks,
+breaklinks=false,
+bookmarks=true,
+bookmarksopen=true,
+urlcolor=black,
+citecolor=black,
+linkcolor=black,
+pdfauthor={AUTHOR},
+pdftitle={Project Description},
+pdfview=FitH,
+pdfpagelayout=OneColumn,
+hyperfootnotes=false]{hyperref}
+\urlstyle{same}
+
+
+\usepackage[open]{bookmark}
+
+\pagestyle{scrheadings}
+\addtokomafont{disposition}{\rmfamily}
+
+%\title{}
+%\author{}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\newcommand{\micro}{μ} % Define micro so that I can easily type the upright mu
+\renewcommand{\perp}{⊥}
+%headers and footers
+\clearscrheadings
+\ihead{}
+\chead{}
+\ohead{}
+
+\cfoot{\thepage}
+%set line spacing to 6 lines per inch, per NSF rules
+\newcommand{\linesperinch}{6.0}
+%\pgfmathparse{(1.0in-\topskip)/\baselineskip/(\linesperinch-1.0)}
+\pgfmathparse{1.0in/\baselineskip/\linesperinch}
+\linespread{\pgfmathresult}
+
+%set up footnote symbols
+%\usepackage[symbol*,perpage,bottom]{footmisc}
+%\usepackage{perpage}
+%\MakePerPage{footnote}
+%\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+
+
+% figure caption formatting
+%\setcapwidth[c]{0.8\textwidth}
+\setcapindent{0pt}
+\addtokomafont{caption}{\small }
+\renewcommand*{\figureformat}{\textbf{\figurename~\thefigure\autodot}}
+\renewcommand*{\tableformat}{\textbf{\tablename~\thetable\autodot}}
+
+% hyphenation patterns for uncommon words
+\hyphenation{qua-si-crys-tal}
+
+\begin{document}
+\noindent{\large\textbf%
+{TITLE%
+}}
+
+%Begin text here
+\section{Introduction}
+
+% END 
+\vspace{1em}
+%\section{Results from Prior NSF Support}
+\noindent\emph{The PI has no prior NSF support.}
+%\pagebreak
+\clearpage
+
+% DRAFT BIBLIOGRAPHY
+%reset header/footer
+\section*{References}
+\nocite{End}
+\nocite{*} % unreferenced bib items appear here
+
+% FINAL BIBLIOGRAPHY (for easy dicing of the PDF)
+%\ihead{References}\setcounter{page}{1}
+%\printbibliography
+
+\end{document}

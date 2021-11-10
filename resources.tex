@@ -1,0 +1,109 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+% !BIB program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+% TODO check 2017 rules
+% TODO Update specs
+% TODO Update personnel
+%\RequirePackage{pdf14}
+\documentclass[fontsize=10pt,paper=letter,twoside=false,onecolumn]{scrartcl} % use larger type; default would be 10pt
+\usepackage{pgfmath} % for linespace calculation
+\usepackage{amsmath}
+
+\usepackage{scrlayer-scrpage}
+
+\usepackage{siunitx}
+
+\usepackage{fontspec} %only if using lualatex
+\defaultfontfeatures{Ligatures={TeX,Required,Common,Contextual},Mapping=tex-text,
+	Numbers={OldStyle,Proportional}}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+
+% Font definitions
+\setmainfont{Palatino Linotype}
+\setmathfont{TeX Gyre Pagella Math} %fallback font
+\setmonofont{Courier New}
+
+% other LaTeX packages.....
+\usepackage[margin=1in,footskip=2em,headsep=2em]{geometry} % See geometry.pdf to learn the layout options. There are lots.
+
+\usepackage{enumerate}
+
+\usepackage[colorlinks,
+breaklinks=true,
+bookmarks=true,
+bookmarksopen=true,
+urlcolor=blue,
+citecolor=BrickRed,
+linkcolor=BrickRed,
+pdfauthor={AUTHOR},
+pdftitle={Resources},
+pdfview=FitH,
+pdfpagelayout=OneColumn]{hyperref}
+\urlstyle{same}
+
+\pagestyle{scrheadings}
+\addtokomafont{disposition}{\rmfamily}
+
+\newcommand{\micro}{μ} % Define micro so that I can easily type the upright mu
+\renewcommand{\perp}{⊥}
+%headers and footers
+\clearscrheadings
+\ihead{}
+\chead{}
+\ohead{}
+
+\cfoot{\thepage}
+
+%set line spacing to 6 lines per inch, per NSF rules
+\newcommand{\linesperinch}{6.0}
+%\pgfmathparse{(1.0in-\topskip)/\baselineskip/(\linesperinch-1.0)}
+\pgfmathparse{1.0in/\baselineskip/\linesperinch}
+\linespread{\pgfmathresult}
+
+\begin{document}
+\section*{Facilities and Equipment}
+The PI’s research space includes $\SI{450}{ft^2}$ in Fisher
+Hall at Duquesne University for optics and atomic physics research. The laboratory space includes a
+vibration isolated laser table ($\SI{32}{ft^2}$) and electrostatic discharge-control flooring. Research equipment
+in the laboratory includes two (2) MogLabs ECD004 tunable diode lasers with $\SI{50}{mW}$ of output power at $\SI{780}{nm}$, a MogLabs MOA002 tapered optical amplifer with $\SI{2}{W}$ of output power, a MogLabs MSA003 master-amplifier combined system with $\SI{3}{W}$ of output power at $\SI{800}{nm}$ for use as a crossed-beam optical dipole trap, and a custom microscope using a Mitutoyo G Plan Apo 50x high NA objective with a PCO edge 4.2 sCMOS camera for data collection.
+Optical test equipment includes optical power meters, photodiodes, and a wavelength meter.  Electronic test equipment includes 3 digital oscilloscopes, 2 digital function generators, several digital multimeters, soldering station, and a reflow soldering oven.
+The laboratory also includes roughing, turbo, ion, and sublimation pumps for an ultrahigh vacuum chamber.  The vacuum chamber includes a custom glass cell with optical coatings, from ColdQuanta.
+
+Dedicated computing equipment includes
+one Dell quad-core workstation for hardware and software development, and data analysis, and an Intel 8-core processor workstation with 2 Nvidia GPUs for
+computation and data analysis.  Software available includes
+ Solidworks 2015 computer-aided design software, Matlab 2015b numerical analysis
+software, and Maple 16 mathematical analysis software. The software packages are provided via
+site-licenses maintained by the Physics department. One workstation also includes LabVIEW 2014
+data acquisition and hardware interface software on a single license purchased by the PI.
+The lab also contains a Kinetigear BoXZY 3D printer/CNC mill machine for  prototyping of parts.
+
+The PI and students also have access to a $\SI{300}{ft^2}$ shared electronics workshop maintained by the physics
+department free of charge to users. This workshop has equipment for building and servicing digital
+and analog electronic circuits. It also houses a LolzBot TAZ 5 3d printer (Aleph Objects, Inc.), maintained by the
+physics departments.
+This equipment and space will be used for the development of the optical systems and electronic
+interfaces, after which these systems will then be transferred to the PI’s laboratory.
+
+The PI is currently mentoring 4 undergraduate student research assistants. Two will be dedicated
+to this project.
+Students have access to a $\SI{400}{ft^2}$ computational physics lab, maintained by the department, with 4 PC workstations containing Solidworks, Matlab, and Maple software packages.
+
+\section*{Other resources}
+Instrumentation support is provided in the form of a staff of highly qualified instrument and machine
+technicians. The Bayer School of Natural and Environmental Sciences (BSNES) Instrumentation and
+Building Manager is Dan Bodnar, who is in charge of maintaining departmental instrumentation, and
+support BSNES research activities by maintaining and repairing research equipment of individual
+investigators. Mr.~Bodnar is assisted by two staff members (Lance Crosby and Chris Lawson) who are
+qualified to perform electrical work and machining. Instrument maintenance and repair are
+underwritten by BSNES.
+
+The university also provides resources for faculty developing educational and outreach activities and has achieved the prestigious Carnegie Classification for Community Engagement.
+The Center for Community-Engaged Teaching and Research (Dr.~Jessica Mann,  Director) provides planning and logistical assistance to faculty members working on community projects.
+The Center for Teaching Excellence (Dr.~Laurel Willingham-McLain, Director) provides career development resources for faculty and assistance with course and lesson planning and the development of new teaching methodology.
+
+The PI is also a member and executive committee member of the Pittsburgh Quantum Institute (Jeremy Levy, Director), an initiative of the University of Pittsburgh to ``help unify and promote quantum science and engineering in the Pittsburgh area,'' by facilitating the sharing of ideas and resources among faculty at Pittsburgh's various research institutions whose research is in quantum science and related fields.  The primary mission of PQI is to facilitate collaboration between its members.  PQI also hosts technology and personnel resources to aid members, free of charge, in outreach, collaboration, and dissemination of research, including state-of-the-art teleconferencing, video production, and internet design resources.  Through PQI, the PI has access to several condensed matter and atomic physics theorists at the University of Pittsburgh, Carnegie-Mellon University, and the Pittsburgh Supercomputing Center.  \emph{Of note, the PI is the only experimental atomic physicist among the major research universities in Pittsburgh.}
+\end{document}

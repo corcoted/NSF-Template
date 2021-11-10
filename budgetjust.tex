@@ -1,0 +1,97 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+%\RequirePackage{pdf14}
+\documentclass[fontsize=10pt,paper=letter,twoside=false,onecolumn,headings=small]{scrartcl} % use larger type; default would be 10pt
+\usepackage{pgfmath} % for linespace calculation
+\usepackage{amsmath}
+\usepackage{enumerate}
+%\usepackage{xcolor}
+
+\usepackage{scrlayer-scrpage}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{fontspec} %only if using lualatex
+\defaultfontfeatures{Ligatures={TeX,Required,Common,Contextual},Mapping=tex-text,
+	Numbers={Lining,Proportional}}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+
+% Font definitions
+\setmainfont{Palatino Linotype}
+\setmathfont{TeX Gyre Pagella Math} %fallback font
+
+% other LaTeX packages.....
+\usepackage[margin=1in,footskip=2em,headsep=2em]{geometry} % See geometry.pdf to learn the layout options. There are lots.
+\usepackage{siunitx}
+
+\usepackage[colorlinks,
+breaklinks=true,
+bookmarks=true,
+bookmarksopen=true,
+urlcolor=blue,
+citecolor=black,
+linkcolor=black,
+pdfauthor={AUTHOR},
+pdftitle={Budget Justification},
+pdfview=FitH,
+pdfpagelayout=OneColumn]{hyperref}
+
+\pagestyle{scrheadings}
+\addtokomafont{disposition}{\rmfamily}
+
+\clearscrheadings
+\ihead{}
+\chead{}
+\ohead{}
+
+\cfoot{\thepage}
+
+%set line spacing to 6 lines per inch, per NSF rules
+\newcommand{\linesperinch}{6.0}
+%\pgfmathparse{(1.0in-\topskip)/\baselineskip/(\linesperinch-1.0)}
+\pgfmathparse{1.0in/\baselineskip/\linesperinch}
+\linespread{\pgfmathresult}
+\renewcommand*\thesection{\Alph{section}}
+\renewcommand*\thesubsection{\Alph{section}\arabic{subsection}}
+
+\begin{document}
+\section*{Budget Justification}
+
+\section{Senior Personnel}
+
+\setcounter{section}{1}\section{Other Personnel}
+
+\setcounter{section}{2}\section{Fringe Benefits}
+
+\setcounter{section}{3}\section{Equipment}
+\begin{enumerate}[D1]
+	\item\textbf{Item name:}
+		description	
+\end{enumerate}
+
+\setcounter{section}{4}\section{Travel}
+
+%\setcounter{section}{5}\section{Participant Support}
+
+\setcounter{section}{6}\section{Other costs}
+
+\subsection{Materials and Supplies}
+\begin{enumerate}[G{1}.1]
+	\item\textbf{Item:}
+		description
+\end{enumerate}
+
+\setcounter{subsection}{1}\subsection{Publication and dissemination costs}
+
+%\setcounter{subsection}{2}\subsection{Consultants}
+
+%\setcounter{subsection}{3}\subsection{Computer Services}
+
+%\setcounter{subsection}{4}\subsection{Subawards}
+
+%\setcounter{subsection}{5}\subsection{Other}
+
+\section*{Total budget request}
+%% DONE !!!!  check before submission
+\end{document}

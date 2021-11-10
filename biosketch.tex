@@ -1,0 +1,154 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+% !BIB program = biber
+% !TeX TXS-program:bibliography = txs:///biber
+
+%! FOR REFERENCE ONLY.  NSF now requires specific PDF forms.
+
+%\RequirePackage{pdf14}
+\documentclass[fontsize=10pt,paper=letter,twoside=false,onecolumn,headings=small]{scrartcl} % use larger type; default would be 10pt
+
+\usepackage{pgfmath}
+\usepackage{amsmath}
+
+%\usepackage{scrlayer-scrpage} % warnings say that this is obsolete.
+\usepackage{scrlayer-scrpage}
+
+\setlength{\baselineskip}{0.16in} %NSF specified "6 lines per inch"
+
+\usepackage{fontspec} %only if using lualatex
+\defaultfontfeatures{Ligatures={TeX,Required,Common,Contextual},
+	Mapping=tex-text,
+	Numbers={Lining,Proportional}}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+
+% Font definitions
+\setmainfont{Times New Roman}
+\setmathfont{TeX Gyre Termes Math} %fallback font
+\setmonofont{Courier New}
+
+% other LaTeX packages.....
+
+\usepackage[backend=biber,bibencoding=utf8,
+sorting=dymdnt,
+url=true,maxbibnames=99,isbn=false,doi=true,
+defernumbers=true,
+%style=reading,annotation=true,entryhead=false,
+]{biblatex}
+
+% HACK to remove "In:" from article entries
+\renewbibmacro{in:}{%
+	\ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+%HACK for reverse chronologial sorting of bib entries
+\DeclareSortingScheme{dymdnt}{
+	\sort{
+		\field{presort}
+	}
+	\sort[final]{
+		\field{sortkey}
+	}
+	\sort[direction=descending]{
+		\field{sortyear}
+		\field{year}
+		\literal{9999}
+	}
+	\sort[direction=descending]{
+		\field[padside=left,padwidth=2,padchar=0]{month}
+		\literal{99}
+	}
+	\sort[direction=descending]{
+		\field[padside=left,padwidth=2,padchar=0]{day}
+		\literal{99}
+	}
+	\sort[direction=descending]{
+		\field[padside=left,padwidth=4,padchar=0]{volume}
+		\literal{9999}
+	}
+	\sort[direction=descending]{
+		\field[padside=left,padwidth=6,padchar=0]{page}
+		\literal{999999}
+	}
+	\sort{
+		\field{sortname}
+		\field{author}
+		\field{editor}
+		\field{translator}
+		\field{sorttitle}
+		\field{title}
+	}
+	\sort{
+		\field{sorttitle}
+	}
+}
+
+\addbibresource{biosketch.bib}
+
+\usepackage{enumerate}
+
+\usepackage[colorlinks,
+breaklinks=false,
+bookmarks=true,
+%bookmarksopen=true,
+urlcolor=black,
+citecolor=red,
+linkcolor=red,
+pdfauthor={AUTHOR},
+pdftitle={Biosketch},
+pdfview=FitH,
+pdfpagelayout=OneColumn]{hyperref}
+\urlstyle{same}
+
+\usepackage[margin=1in,footskip=2em,headsep=2em]{geometry} % See geometry.pdf to learn the layout options. There are lots.
+
+%\DeclareFieldFormat{doi}{\url{http://dx.doi.org/#1}}
+
+\pagestyle{scrheadings}
+\addtokomafont{disposition}{\rmfamily}
+
+\clearscrheadings
+\ihead{Biosketch}
+\chead{}
+\ohead{AUTHOR}
+
+\cfoot{\thepage}
+
+%set line spacing to 6 lines per inch, per NSF rules
+\newcommand{\linesperinch}{6.0}
+%\pgfmathparse{(1.0in-\topskip)/\baselineskip/(\linesperinch-1.0)}
+\pgfmathparse{1.0in/\baselineskip/\linesperinch}
+\linespread{\pgfmathresult}
+
+\begin{document}
+
+%Begin text here
+\section*{Biosketch}
+{\Large\textsc{AUTHOR}}
+\section*{Professional Preparation}
+\begin{tabular}{llll}
+School & Location & Major & Degree, year \\
+\end{tabular}
+\section*{Appointments}
+\begin{tabular}{llll}
+	Dates & Institution & Location & Title 
+\end{tabular}
+\section*{Products}
+%5 related products and 5 other significant products
+\subsection*{Related Products}
+\begin{refsection}
+\nocite{}
+\printbibliography[heading=none]
+\end{refsection}
+\subsection*{Significant Products}
+\begin{refsection}
+\nocite{}
+\printbibliography[heading=none]
+\end{refsection}
+\section*{Synergistic Activities}
+%5 examples
+\begin{enumerate}
+	%1
+	\item ITEM
+\end{enumerate}
+\end{document}

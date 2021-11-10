@@ -1,0 +1,43 @@
+% some macro defitions to tweak the behavior of biblatex/biber
+
+% HACK to remove "In:" from article entries
+\renewbibmacro{in:}{%
+	\ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+
+% HACK to fix cases in titles
+\DeclareFieldFormat{sentencecase}{\MakeSentenceCase{#1}}
+
+\renewbibmacro*{title}{%
+	\ifthenelse{\iffieldundef{title}\AND\iffieldundef{subtitle}}
+	{}
+	{\ifthenelse{\ifentrytype{article}\OR\ifentrytype{inbook}%
+			\OR\ifentrytype{incollection}\OR\ifentrytype{inproceedings}%
+			\OR\ifentrytype{inreference}}
+		{\printtext[title]{%
+				\printfield[sentencecase]{title}%
+				\setunit{\subtitlepunct}%
+				\printfield[sentencecase]{subtitle}}}%
+		{\printtext[title]{%
+				\printfield[titlecase]{title}%
+				\setunit{\subtitlepunct}%
+				\printfield[titlecase]{subtitle}}}%
+		\newunit}%
+	\printfield{titleaddon}}
+
+\DeclareFieldFormat{titlecase}{\MakeTitleCase{#1}}
+
+\newrobustcmd{\MakeTitleCase}[1]{%
+	\ifthenelse{\ifcurrentfield{booktitle}\OR\ifcurrentfield{booksubtitle}%
+		\OR\ifcurrentfield{maintitle}\OR\ifcurrentfield{mainsubtitle}%
+		\OR\ifcurrentfield{journaltitle}\OR\ifcurrentfield{journalsubtitle}%
+		\OR\ifcurrentfield{issuetitle}\OR\ifcurrentfield{issuesubtitle}%
+		\OR\ifentrytype{book}\OR\ifentrytype{mvbook}\OR\ifentrytype{bookinbook}%
+		\OR\ifentrytype{booklet}\OR\ifentrytype{suppbook}%
+		\OR\ifentrytype{collection}\OR\ifentrytype{mvcollection}%
+		\OR\ifentrytype{suppcollection}\OR\ifentrytype{manual}%
+		\OR\ifentrytype{periodical}\OR\ifentrytype{suppperiodical}%
+		\OR\ifentrytype{proceedings}\OR\ifentrytype{mvproceedings}%
+		\OR\ifentrytype{reference}\OR\ifentrytype{mvreference}%
+		\OR\ifentrytype{report}\OR\ifentrytype{thesis}}
+	{#1}
+	{\MakeSentenceCase{#1}}}
